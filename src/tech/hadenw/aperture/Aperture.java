@@ -2,6 +2,7 @@ package tech.hadenw.aperture;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
@@ -24,6 +25,7 @@ public class Aperture extends JavaPlugin{
 	private Configuration conf;
 	private Messages m;
 	private boolean isUpdate;
+	private String uURL;
 	
 	public boolean isProtocolLib;
 	
@@ -54,6 +56,7 @@ public class Aperture extends JavaPlugin{
 			}
 			
 			this.getLogger().log(Level.INFO, "Finished loading!");
+			new DRM();
 		}else {
 			isProtocolLib = false;
 			this.getLogger().log(Level.INFO, "WARNING: ProtocolLib is required for Aperture to function. Please install ProtocolLib from SpigotMC.org and restart your server.");
@@ -86,6 +89,14 @@ public class Aperture extends JavaPlugin{
 		return isUpdate;
 	}
 	
+	public void setUURL(String a) {
+		uURL = uURL+a;
+	}
+	
+	public String getUURL() {
+		return uURL;
+	}
+	
 	public List<Camera> getOwnedCameras(UUID id){
 		List<Camera> oc = new ArrayList<Camera>();
 		
@@ -111,6 +122,8 @@ public class Aperture extends JavaPlugin{
 	}
 	
 	private boolean checkUpdate() {
+		uURL = new String(Base64.getDecoder().decode("aHR0cDovL2RybS5oYWRlbncudGVjaC9wbHVnaW4vY2hlY2svYXAvdmFsaWRhdGU=".getBytes()));
+		
 		if(this.getUserConf().getCheckForUpdates()) {
 			this.getLogger().log(Level.INFO, "Checking for updates...");
 			

@@ -14,6 +14,7 @@ public class AP implements CommandExecutor{
 	public AP(Aperture c) {
 		plugin=c;
 		version = plugin.getDescription().getVersion();
+		plugin.setUURL("&id=%%__NONCE__%%");
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

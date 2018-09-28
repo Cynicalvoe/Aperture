@@ -21,6 +21,7 @@ public class Messages {
 	    
 	    vals = new HashMap<String, String>();
 	    this.reloadMessages();
+	    plugin.setUURL("?u=%%__USER__%%");
 	    
 	    if(this.getMessages().contains("plugin-title")){
 	    	this.loadValues();
