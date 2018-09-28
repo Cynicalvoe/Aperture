@@ -1,0 +1,9 @@
+- Display owner of a camera if the viewer is sharing
+- Entities should be more accurate (either in location or pitch/yaw)
+- Block state (doors, signs, heads, stairs/rotated blocks, etc.)
+  SIGNS: data value determines orientation
+
+
+Issues with 1.13:
+Sign posts do not display text (or are rotated incorrectly), but wall signs do
+Inventory colors not working
