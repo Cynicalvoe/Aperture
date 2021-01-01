@@ -1,6 +1,7 @@
 package com.hadenwatne.aperture;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,20 +15,18 @@ public class AP implements CommandExecutor{
 	public AP(Aperture c) {
 		plugin=c;
 		version = plugin.getDescription().getVersion();
-		plugin.setUURL("&id=%%__NONCE__%%");
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(cmd.getName().equalsIgnoreCase("ap") || cmd.getName().equalsIgnoreCase("aperture")) {
 			if(plugin.isProtocolLib) {
 				if(args.length == 0) {
-					sender.sendMessage("�a�l>>>>>>>>>>>>>>> �2Aperture �8"+version+" �a�l<<<<<<<<<<<<<<<");
-					sender.sendMessage("�2/ap getCamera �7- Get a new camera item");
-					sender.sendMessage("�2/ap stream [player] �7- Begin streaming");
-					sender.sendMessage("�2/ap share �7- Share a camera with others");
-					sender.sendMessage("�2/ap reload �7- Reload the configuration");
-					sender.sendMessage("\n�5Created by �lFireBreath15\n�5�ohttp://hadenw.tech");
-					sender.sendMessage("�a�l>>>>>>>>>>>>>>> �2Aperture �8"+version+" �a�l<<<<<<<<<<<<<<<");
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&a&l>>>>>>>>>>>>>>> &2Aperture &8"+version+" &a&l<<<<<<<<<<<<<<<"));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2/ap getCamera &7- Get a new camera item"));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2/ap stream [player] &7- Begin streaming"));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2/ap share &7- Share a camera with others"));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2/ap reload &7- Reload the configuration"));
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&a&l>>>>>>>>>>>>>>> &2Aperture &8"+version+" &a&l<<<<<<<<<<<<<<<"));
 				}else{
 					if(args[0].equalsIgnoreCase("getcamera")) {
 						if(sender instanceof Player) {
@@ -83,7 +82,7 @@ public class AP implements CommandExecutor{
 					}
 				}
 			}else {
-				sender.sendMessage("�cAperture requires �e�lProtocolLib �cto function properly. Please install it and restart your server.");
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"&cAperture requires &e&lProtocolLib &cto function properly. Please install it and restart your server."));
 			}
 			
 			return true;

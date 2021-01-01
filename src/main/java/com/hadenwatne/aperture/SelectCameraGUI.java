@@ -6,6 +6,7 @@ import java.util.List;
 import com.hadenwatne.aperture.files.Camera;
 import com.hadenwatne.aperture.listeners.Share;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -26,6 +27,7 @@ public class SelectCameraGUI implements Listener{
 	private OfflinePlayer owner;
 	private boolean isRemoving;
 	private boolean isSharing;
+	private final String colorChar = Character.toString(ChatColor.COLOR_CHAR);
 	
 	public SelectCameraGUI(Aperture c, Player pl, boolean share){
 		for(InstanceStream s : c.getStreams()) {
@@ -82,7 +84,7 @@ public class SelectCameraGUI implements Listener{
 		if(size == 0)
 			size = 9;
 		
-		gui = Bukkit.createInventory(null, size, "�a�ki�8 Choose Camera �a�ki");
+		gui = Bukkit.createInventory(null, size, ChatColor.translateAlternateColorCodes('&', "&a&ki&8 Choose Camera &a&ki"));
 	}
 	
 	private void beginStreaming() {
@@ -146,10 +148,10 @@ public class SelectCameraGUI implements Listener{
 		ItemMeta hm = item.getItemMeta();
 		
 		List<String> lore = new ArrayList<String>();
-		lore.add("�d"+c.getName());
-		lore.add("�7x: "+c.getLocation().getX());
-		lore.add("�7y: "+c.getLocation().getY());
-		lore.add("�7z: "+c.getLocation().getZ());
+		lore.add(colorChar+"d"+c.getName());
+		lore.add(colorChar+"7x: "+c.getLocation().getX());
+		lore.add(colorChar+"7y: "+c.getLocation().getY());
+		lore.add(colorChar+"7z: "+c.getLocation().getZ());
 		hm.setLore(lore);
 		item.setItemMeta(hm);
 		
@@ -160,15 +162,15 @@ public class SelectCameraGUI implements Listener{
 		ItemStack item = new ItemStack(Material.BARRIER);
 		ItemMeta hm = item.getItemMeta();
 		
-		hm.setDisplayName("�c�lRemove Camera?");
+		hm.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&c&lRemove Camera?"));
 		
 		List<String> lore = new ArrayList<String>();
-		lore.add("�d"+c.getName());
-		lore.add("�7x: "+c.getLocation().getX());
-		lore.add("�7y: "+c.getLocation().getY());
-		lore.add("�7z: "+c.getLocation().getZ());
-		lore.add("�cRight-click again to remove");
-		lore.add("�cthis camera");
+		lore.add(colorChar+"d"+c.getName());
+		lore.add(colorChar+"7x: "+c.getLocation().getX());
+		lore.add(colorChar+"7y: "+c.getLocation().getY());
+		lore.add(colorChar+"7z: "+c.getLocation().getZ());
+		lore.add(colorChar+"cRight-click again to remove");
+		lore.add(colorChar+"cthis camera");
 		hm.setLore(lore);
 		item.setItemMeta(hm);
 		

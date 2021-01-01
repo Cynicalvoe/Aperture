@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 import com.hadenwatne.aperture.Aperture;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -13,6 +14,8 @@ public class Messages {
 	private FileConfiguration messages;
 	private File messagesFile;
 	private HashMap<String, String> vals;
+	private final String colorChar = Character.toString(ChatColor.COLOR_CHAR);
+	
 	public Messages(Aperture c){
 		plugin=c;
 		this.messages = null;
@@ -20,7 +23,6 @@ public class Messages {
 	    
 	    vals = new HashMap<String, String>();
 	    this.reloadMessages();
-	    plugin.setUURL("?u=%%__USER__%%");
 	    
 	    if(this.getMessages().contains("plugin-title")){
 	    	this.loadValues();
@@ -61,33 +63,33 @@ public class Messages {
 	public void loadValues(){
 		vals.clear();
 		
-		vals.put("plugin-title", getMessages().getString("plugin-title").replaceAll("&", "�")+" ");
-		vals.put("wrong-command", getMessages().getString("wrong-command").replaceAll("&", "�"));
-		vals.put("no-permission", getMessages().getString("no-permission").replaceAll("&", "�"));
-		vals.put("must-be-player", getMessages().getString("must-be-player").replaceAll("&", "�"));
-		vals.put("player-not-found", getMessages().getString("player-not-found").replaceAll("&", "�"));
-		vals.put("already-streaming", getMessages().getString("already-streaming").replaceAll("&", "�"));
-		vals.put("plugin-reloaded", getMessages().getString("plugin-reloaded").replaceAll("&", "�"));
-		vals.put("camera-added", getMessages().getString("camera-added").replaceAll("&", "�"));
-		vals.put("camera-removed", getMessages().getString("camera-removed").replaceAll("&", "�"));
-		vals.put("limit-reached", getMessages().getString("limit-reached").replaceAll("&", "�"));
-		vals.put("type-cam-name", getMessages().getString("type-cam-name").replaceAll("&", "�"));
-		vals.put("must-finish-adding", getMessages().getString("must-finish-adding").replaceAll("&", "�"));
-		vals.put("not-owner", getMessages().getString("not-owner").replaceAll("&", "�"));
-		vals.put("share-self", getMessages().getString("share-self").replaceAll("&", "�"));
-		vals.put("already-sharing", getMessages().getString("already-sharing").replaceAll("&", "�"));
-		vals.put("cam-shared", getMessages().getString("cam-shared").replaceAll("&", "�"));
-		vals.put("enter-name", getMessages().getString("enter-name").replaceAll("&", "�"));
-		vals.put("update-available", getMessages().getString("update-available").replaceAll("&", "�"));
+		vals.put("plugin-title", getMessages().getString("plugin-title").replaceAll("&", colorChar)+" ");
+		vals.put("wrong-command", getMessages().getString("wrong-command").replaceAll("&", colorChar));
+		vals.put("no-permission", getMessages().getString("no-permission").replaceAll("&", colorChar));
+		vals.put("must-be-player", getMessages().getString("must-be-player").replaceAll("&", colorChar));
+		vals.put("player-not-found", getMessages().getString("player-not-found").replaceAll("&", colorChar));
+		vals.put("already-streaming", getMessages().getString("already-streaming").replaceAll("&", colorChar));
+		vals.put("plugin-reloaded", getMessages().getString("plugin-reloaded").replaceAll("&", colorChar));
+		vals.put("camera-added", getMessages().getString("camera-added").replaceAll("&", colorChar));
+		vals.put("camera-removed", getMessages().getString("camera-removed").replaceAll("&", colorChar));
+		vals.put("limit-reached", getMessages().getString("limit-reached").replaceAll("&", colorChar));
+		vals.put("type-cam-name", getMessages().getString("type-cam-name").replaceAll("&", colorChar));
+		vals.put("must-finish-adding", getMessages().getString("must-finish-adding").replaceAll("&", colorChar));
+		vals.put("not-owner", getMessages().getString("not-owner").replaceAll("&", colorChar));
+		vals.put("share-self", getMessages().getString("share-self").replaceAll("&", colorChar));
+		vals.put("already-sharing", getMessages().getString("already-sharing").replaceAll("&", colorChar));
+		vals.put("cam-shared", getMessages().getString("cam-shared").replaceAll("&", colorChar));
+		vals.put("enter-name", getMessages().getString("enter-name").replaceAll("&", colorChar));
+		vals.put("update-available", getMessages().getString("update-available").replaceAll("&", colorChar));
 		
 		// Added later
 		if(getMessages().contains("stream-finished")) 
-			vals.put("stream-finished", getMessages().getString("stream-finished").replaceAll("&", "�"));
+			vals.put("stream-finished", getMessages().getString("stream-finished").replaceAll("&", colorChar));
 		else {
 			this.getMessages().set("stream-finished", "&aCamera stream finished.");
 			this.saveMessages();
 			
-			vals.put("stream-finished", getMessages().getString("stream-finished").replaceAll("&", "�"));
+			vals.put("stream-finished", getMessages().getString("stream-finished").replaceAll("&", colorChar));
 		}
 		
 	}

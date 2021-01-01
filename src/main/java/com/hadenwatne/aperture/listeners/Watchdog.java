@@ -26,15 +26,6 @@ public class Watchdog implements Listener{
 	}
 	
 	@EventHandler
-	public void onJoin(PlayerJoinEvent e) {
-		if(e.getPlayer().hasPermission("aperture.admin")) {
-			if(plugin.isUpdateAvailable()) {
-				e.getPlayer().sendMessage(plugin.getMessages().updateAvailable());
-			}
-		}
-	}
-	
-	@EventHandler
 	public void onSneak(PlayerToggleSneakEvent e) {
 		for(InstanceStream s : plugin.getStreams()) {
 			if(s.getPlayer().equals(e.getPlayer())) {
