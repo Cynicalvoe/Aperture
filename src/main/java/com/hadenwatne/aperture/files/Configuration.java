@@ -6,6 +6,7 @@ import java.util.logging.Level;
 
 import com.hadenwatne.aperture.Aperture;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -18,6 +19,7 @@ public class Configuration {
 	private int maxCameras;
 	private ItemStack camItem;
 	private boolean checkUpdates;
+	private final String colorChar = Character.toString(ChatColor.COLOR_CHAR);
 	
 	// SQL data
 	private boolean useMySQL;
@@ -92,7 +94,7 @@ public class Configuration {
 				List<String> lore = new ArrayList<String>();
 				
 				for(String s : plugin.getConfig().getStringList("camera.item.lore")) {
-					lore.add(s.replaceAll("&", "�"));
+					lore.add(s.replaceAll("&", colorChar));
 				}
 				
 				im.setLore(lore);
@@ -101,14 +103,14 @@ public class Configuration {
 			
 			if(plugin.getConfig().contains("camera.item.name")) { 
 				ItemMeta im = camItem.getItemMeta();
-				im.setDisplayName(plugin.getConfig().getString("camera.item.name").replaceAll("&", "�"));
+				im.setDisplayName(plugin.getConfig().getString("camera.item.name").replaceAll("&", colorChar));
 				camItem.setItemMeta(im);
 			}
 		}catch(Exception e){
 			camItem = new ItemStack(Material.SKELETON_SKULL, 1, (byte)3);
 			SkullMeta hm = (SkullMeta)camItem.getItemMeta();
 			hm.setOwningPlayer(Bukkit.getOfflinePlayer("Camera"));
-			hm.setDisplayName("�e�lCamera");
+			hm.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&e&lCamera"));
 			camItem.setItemMeta(hm);
 			
 			plugin.getLogger().log(Level.WARNING, "Error loading camera item. Using default value.");
